@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<!--
+Студент,	 выполнивший работу: Степанов Михаил Алексеевич
+Группа: P3230
+Вариант: 30915
+-->
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="img/tab-icon.ico">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>Web-lab 4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div id="header"></div>
+    <div id="content" style="margin-top: 30px;">
+        <span class="spanCenter">
+            Степанов Михаил Алексеевич
+        </span>
+        <span class="spanCenter">
+            Студент группы P3230
+            <br>
+            Вариант: 30916
+        </span>
+    </div>
+    <div id="loginForm">
+        <form>
+            <div class="pointInputWrap" id="usernameInput" >
+                <label class="pointLabel">Логин:</label>
+                <input type="text" v-bind:class="[hasError ? errorClass : '', mainClass]" v-model="text">
+            </div>
+            <div class="pointInputWrap" id="passwordInput">
+                <label class="pointLabel">Пароль:</label>
+                <input type="text" v-bind:class="[hasError ? errorClass : '', mainClass]" v-model="text">
+            </div>
+            <div class="pointInputWrap" id="loginFormButtons">
+                <input type="button" class="pointInput" value="Регистрация" v-on:click="register">
+                <input type="button" class="pointInput" value="Вход" v-on:click="login">
+            </div>
+        </form>
+    </div>
+    <div id="footer"></div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="scripts/vueGreeting.js"></script>
+</body>
+
+</html>

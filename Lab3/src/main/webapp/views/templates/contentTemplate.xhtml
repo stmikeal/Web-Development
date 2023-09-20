@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+   <h:head>
+      <h:outputStylesheet name="styles/style.css" />
+      <title><ui:insert name="title"/></title>
+   </h:head>
+
+   <body>
+   <table id="main-grid">
+      <tr>
+         <td>
+            <ui:insert name="buttonBack"/>
+         </td>
+      </tr>
+      <tr>
+         <ui:insert name="graphic">
+            <ui:include src="/views/templates/graphicTemplates.xhtml"/>
+         </ui:insert>
+         <ui:insert name="form">
+            <ui:include src="/views/templates/formTemplate.xhtml"/>
+         </ui:insert>
+      </tr>
+      <ui:insert name="result">
+         <ui:include src="/views/templates/resultTemplate.xhtml"/>
+      </ui:insert>
+      <ui:insert name="footer"/>
+   </table>
+   <ui:insert name="scripts"/>
+   </body>
+</f:view>
+</html>

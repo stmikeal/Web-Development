@@ -1,0 +1,109 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://java.sun.com/jsf/html"
+      xmlns:pf="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core">
+
+<body>
+    <ui:composition>
+        <td id="content-form">
+            <h:form action="" method="POST">
+                <fieldset>
+                    <legend><span id="legend-text">Проверьте вашу точку</span></legend>
+                    <p:messages id="msgs"/>
+                    <table>
+                        <!-- X-input field -->
+                        <tr class="label-col">
+                            <td rowspan="2" class="input-grid-label">
+                                <label class="bold-label">X[-5..5]: </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <pf:spinner id="xInput"
+                                            rotate="true"
+                                            class="number1"
+                                            stepFactor="0.1"
+                                            min="-5"
+                                            max="5"
+                                            decimalSeparator="."
+                                            value="#{mainBean.x}"
+                                            widgetVar="xInput"
+                                            label="X">
+                                    <f:validateDoubleRange minimum="-5" maximum="5"/>
+                                </pf:spinner>
+                            </td>
+                        </tr>
+
+                        <!-- Y-input field -->
+                        <tr class="label-col">
+                            <td rowspan="2" class="input-grid-label">
+                                <label class="bold-label">Y[-3..5]: </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <pf:inputText id="yInput"
+                                              type="text"
+                                              class="number2"
+                                              maxlength="8"
+                                              value="#{mainBean.y}"
+                                              widgetVar="yInput"
+                                              label="Y">
+                                    <f:validateDoubleRange minimum="-3" maximum="5"/>
+                                </pf:inputText>
+                            </td>
+                        </tr>
+
+                        <!-- R-input field -->
+                        <tr class="label-col">
+                            <td rowspan="2" class="input-grid-label">
+                                <label class="bold-label">R: </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table class="nopadding">
+                                    <tr class="nopadding">
+                                        <td class="rcheckbox">
+                                           <pf:selectOneMenu id="rMenu"
+                                                            class="number2"
+                                                            value="#{mainBean.r}"
+                                                            widgetVar="rMenu"
+                                                            onchange="changeR(this.value)">
+                                               <f:selectItem itemLabel="1" itemValue="1"/>
+                                               <f:selectItem itemLabel="1.5" itemValue="1.5"/>
+                                               <f:selectItem itemLabel="2" itemValue="2"/>
+                                               <f:selectItem itemLabel="2.5" itemValue="2.5"/>
+                                               <f:selectItem itemLabel="3" itemValue="3"/>
+                                           </pf:selectOneMenu>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <pf:commandButton id="checkButton" value="Проверить"
+                                      action="#{mainBean.addPoint}"
+                                      update="@form"
+                                      class="button-form"
+                                      widgetVar="submitButton"
+                                      onsuccess="loadPointsFromTable()">
+                        <f:ajax render="historyTable"
+                                execute="@form"/>
+                    </pf:commandButton>
+                    <pf:commandButton id="clearButton" value="Очистить"
+                                      action="#{mainBean.clearPoints}"
+                                      class="button-form"
+                                      widgetVar="clearButton"
+                                      onclick="clearTable()">
+                        <f:ajax render="historyTable"
+                                execute="@form"/>
+                    </pf:commandButton>
+                </fieldset>
+            </h:form>
+        </td>
+    </ui:composition>
+</body>
+</html>

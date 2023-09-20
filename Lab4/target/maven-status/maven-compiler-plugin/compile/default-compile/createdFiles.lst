@@ -1,0 +1,8 @@
+servlet\AddPointServlet.class
+servlet\ClearPointServlet.class
+servlet\LoginServlet.class
+bean\pointBean.class
+bean\userBean.class
+tools\LoginCheckerFactory.class
+servlet\RegisterServlet.class
+tools\LoginChecker.class

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html" xmlns:v-on="http://www.w3.org/1999/xhtml"
+	  xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<!--
+Студент,	 выполнивший работу: Степанов Михаил Алексеевич
+Группа: P3230
+Вариант: 30915
+-->
+<head>
+	<meta charset="UTF-8">
+	<link rel="icon" href="img/tab-icon.ico">
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<title>Web-lab 4</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div id="header">
+		<!--Field for display navigation bar on desktop-->
+		<div id="navigationMap">
+			<div class="navigationPlate" id="nameField">Вы вошли как: {{username}}</div>
+			<input id="backButton" type="button" value="Logout" v-on:click="goBack" class="navigationPlate">
+		</div>
+		<!--Field for display navigation bar on phone-->
+		<div id="menuButton">
+		</div>
+	</div>
+	<div id="content">
+		<div id="graph">
+			<canvas width="300" height="300" id="canvas" v-on:click="onClick">Обновите браузер</canvas>
+		</div>
+		<div id="form">
+			<form>
+				<span class="spanCenter">Проверьте вашу точку!</span>
+				<div class="pointInputWrap" id="xTextInput">
+					<label class="pointLabel">X: </label>
+					<input type="text" class="pointInput" v-model="text">
+				</div>
+				<div class="pointInputWrap" id="yTextInput">
+					<label class="pointLabel">Y:</label>
+					<input type="text" class="pointInput" v-model="text">
+				</div>
+				<div class="pointInputWrap" id="rTextInput">
+					<label class="pointLabel">R:</label>
+					<input type="text" class="pointInput" v-model="text">
+				</div>
+				<div class="pointInputWrap" id="controlFormButtons">
+					<input id="submitButton" type="button" class="pointInput" value="Отправить" v-on:click="addPoint">
+					<input type="button" class="pointInput" value="Очистить" v-on:click="clearPoint">
+				</div>
+			</form>
+		</div>
+	</div>
+	<div id="historyTable">
+		<span class="spanCenter" id="caption">Таблица результатов</span>
+		<div id="captionRow">
+			<div>X</div>
+			<div>Y</div>
+			<div>R</div>
+			<div>Время отправки</div>
+			<div>Время исполнения</div>
+			<div>Результат</div>
+		</div>
+		<div class="historyRow" v-for="point in points">
+			<div>{{point.x}}</div>
+			<div>{{point.y}}</div>
+			<div>{{point.r}}</div>
+			<div>{{point.time}}</div>
+			<div>{{point.script}}</div>
+			<div>{{point.hit}}</div>
+		</div>
+	</div>
+	<div id="footer">
+	</div>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+	<script src="scripts/vueIndex.js"></script>
+</body>
+</html>

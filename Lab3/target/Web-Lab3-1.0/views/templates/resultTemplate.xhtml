@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:pf="http://primefaces.org/ui">
+<body>
+   <ui:composition>
+         <tr>
+            <td colspan="2" id="history-td">
+                    <h:dataTable id="historyTable"
+                                value="#{mainBean.points}"
+                                var="point">
+                       <h:column>
+                           <div class="table-cell"><f:facet name="header">X</f:facet></div>
+                           <div class="table-cell">#{point.x}</div>
+                       </h:column>
+                       <h:column>
+                           <div class="table-cell"><f:facet name="header">Y</f:facet></div>
+                           <div class="table-cell">#{point.y}</div>
+                       </h:column>
+                       <h:column>
+                           <div class="table-cell"><f:facet name="header">R</f:facet></div>
+                           <div class="table-cell">#{point.r}</div>
+                       </h:column>
+                       <h:column>
+                           <div class="table-cell"><f:facet name="header">Время выполнения</f:facet></div>
+                           <div class="table-cell">#{point.scriptTime}</div>
+                       </h:column>
+                       <h:column>
+                           <div class="table-cell"><f:facet name="header">Время отправки</f:facet></div>
+                           <div class="table-cell">#{point.sendTime}</div>
+                       </h:column>
+                       <h:column>
+                           <div class="table-cell"><f:facet name="header">Результат</f:facet></div>
+                           <div class="table-cell">#{point.hit}</div>
+                       </h:column>
+                    </h:dataTable>
+            </td>
+         </tr>
+   </ui:composition>
+</body>
+</html>
